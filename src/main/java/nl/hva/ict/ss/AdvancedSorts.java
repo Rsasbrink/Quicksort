@@ -31,7 +31,7 @@ public class AdvancedSorts {
     public static <E extends Comparable<E>> LinkedList<E> linkedListSort(LinkedList<E> unsorted, int links, int rechts) {
         int L = links;
         int R = rechts;
-        E pivot = unsorted.get(0);
+        E pivot = unsorted.get((links + rechts) / 2);
         Player pivotPlayer = (Player) pivot;
         do {
             Player comparePlayerLeft = (Player) unsorted.get(L);
