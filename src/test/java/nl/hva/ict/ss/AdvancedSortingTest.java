@@ -38,14 +38,15 @@ public class AdvancedSortingTest {
         System.out.flush();
 
         // Try to get Java read for steady measurements
-        AdvancedSorts.quickSort(new LinkedList<Player>());
-        AdvancedSorts.quickSort(new Player[0]);
+//        AdvancedSorts.quickSort(new LinkedList<Player>());
+        //AdvancedSorts.quickSort(new Player[0]);
     }
 
     @Test
     public void measureEfficiencyArray() {
         System.out.printf("Array implementation%n");
         long timeNeeded = 0;
+        int count = 0;
         for (int numberOfPlayers = 100; numberOfPlayers < UPPER_LIMIT && timeNeeded < TWENTY_SECONDS; numberOfPlayers *= 2) {
             Player[] players = getSubList(unsortedPlayers, numberOfPlayers).toArray(new Player[numberOfPlayers]);
             System.gc();
@@ -61,7 +62,9 @@ public class AdvancedSortingTest {
 
             System.out.printf("%d;%d%n", numberOfPlayers, timeNeeded);
             System.out.flush();
+            count++;
         }
+        System.out.println(count);
     }
 
     @Test
