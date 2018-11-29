@@ -35,12 +35,12 @@ public class AdvancedSorts {
         Player pivotPlayer = (Player) pivot;
         do {
             Player comparePlayerLeft = (Player) unsorted.get(L);
-            while(comparePlayerLeft.getHighScore() < pivotPlayer.getHighScore()){
+            while(comparePlayerLeft.compareTo(pivotPlayer) == 1){
                 L++;
                 comparePlayerLeft = (Player) unsorted.get(L);
             }
             Player comparePlayerRight = (Player) unsorted.get(R);
-            while (pivotPlayer.getHighScore() < comparePlayerRight.getHighScore())
+            while (pivotPlayer.compareTo(comparePlayerRight)== 1)
             {
                 R--;
                 comparePlayerRight = (Player) unsorted.get(R);
@@ -73,12 +73,12 @@ public class AdvancedSorts {
         
         do {
             Player comparePlayerLeft = (Player) unsorted[L];
-            while(comparePlayerLeft.getHighScore() < pivotPlayer.getHighScore()){
+            while(comparePlayerLeft.compareTo(pivotPlayer) == 1){
                 L++;
                 comparePlayerLeft = (Player) unsorted[L];
             }
             Player comparePlayerRight = (Player) unsorted[R];
-            while (pivotPlayer.getHighScore() < comparePlayerRight.getHighScore())
+             while (pivotPlayer.compareTo(comparePlayerRight)== 1)
             {
                 R--;
                 comparePlayerRight = (Player) unsorted[R];

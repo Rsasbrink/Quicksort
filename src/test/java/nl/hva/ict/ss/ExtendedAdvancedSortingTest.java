@@ -11,19 +11,19 @@ import org.junit.Test;
  * here will result in failing the assignment!
  */
 public class ExtendedAdvancedSortingTest extends AdvancedSortingTest {
-//
-//    @Test
-//    public void measureEfficiencyArray() {
-//        System.out.printf("Array implementation V2%n");
-//        int numberOfPlayers = 20;
-//        Player[] players = getSubList(unsortedPlayers, numberOfPlayers).toArray(new Player[numberOfPlayers]);
-//
-//        Player[] playersSorted = AdvancedSorts.quickSort(players);
-//        for (int i = 0; i < playersSorted.length; i++) {
-//            System.out.println(playersSorted[i].getHighScore());
-//        }
-//
-//    }
+
+    @Test
+    public void measureEfficiencyArray() {
+        System.out.printf("Array implementation V2%n");
+        int numberOfPlayers = 20;
+        Player[] players = getSubList(unsortedPlayers, numberOfPlayers).toArray(new Player[numberOfPlayers]);
+
+        Player[] playersSorted = AdvancedSorts.quickSort(players);
+        for (int i = 0; i < playersSorted.length; i++) {
+            System.out.println(playersSorted[i].getHighScore());
+        }
+
+    }
 
     @Test
     public void measureEfficiencyLinkedList() {
