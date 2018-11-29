@@ -13,7 +13,11 @@ public class AdvancedSorts {
      * @return
      */
     public static <E extends Comparable<E>> LinkedList<E> quickSort(LinkedList<E> unsorted) {
-        return linkedListSort(unsorted, 0, unsorted.size() - 1);
+        if(unsorted.size() == 0){
+            return unsorted;
+        }else{
+            return linkedListSort(unsorted, 0, unsorted.size() - 1);
+        }
     }
 
     /**
@@ -25,79 +29,83 @@ public class AdvancedSorts {
      * @return
      */
     public static <E extends Comparable<E>> E[] quickSort(E[] unsorted) {
-        return arraySort(unsorted, 0, unsorted.length - 1);
+        if(unsorted.length == 0){
+            return unsorted;
+        }else{
+            return arraySort(unsorted, 0, unsorted.length - 1);
+        }
     }
     
-    public static <E extends Comparable<E>> LinkedList<E> linkedListSort(LinkedList<E> unsorted, int links, int rechts) {
-        int L = links;
-        int R = rechts;
-        E pivot = unsorted.get((links + rechts) / 2);
+    public static <E extends Comparable<E>> LinkedList<E> linkedListSort(LinkedList<E> unsorted, int minimum, int maximum) {
+        int left = minimum;
+        int right = maximum;
+        E pivot = unsorted.get((minimum + maximum) / 2);
         Player pivotPlayer = (Player) pivot;
         do {
-            Player comparePlayerLeft = (Player) unsorted.get(L);
+            Player comparePlayerLeft = (Player) unsorted.get(left);
             while(comparePlayerLeft.compareTo(pivotPlayer) == 1){
-                L++;
-                comparePlayerLeft = (Player) unsorted.get(L);
+                left++;
+                comparePlayerLeft = (Player) unsorted.get(left);
             }
-            Player comparePlayerRight = (Player) unsorted.get(R);
+            Player comparePlayerRight = (Player) unsorted.get(right);
             while (pivotPlayer.compareTo(comparePlayerRight)== 1)
             {
-                R--;
-                comparePlayerRight = (Player) unsorted.get(R);
+                right--;
+                comparePlayerRight = (Player) unsorted.get(right);
             }
 
-            if (L <= R) {
-                E playerLeft = unsorted.get(L);
-                unsorted.set(L, unsorted.get(R));
-                unsorted.set(R, playerLeft);
-                L++;
-                R--;
+            if (left <= right) {
+                E playerLeft = unsorted.get(left);
+                unsorted.set(left, unsorted.get(right));
+                unsorted.set(right, playerLeft);
+                left++;
+                right--;
             }
-        } while (L < R);
+        } while (left < right);
 
-        if (links < R) {
-            linkedListSort(unsorted, links, R);
+        if (minimum < right) {
+            linkedListSort(unsorted, minimum, right);
         }
-        if (L < rechts) {
-            linkedListSort(unsorted, L, rechts);
+        if (left < maximum) {
+            linkedListSort(unsorted, left, maximum);
         }
         
         return unsorted;
     }
     
-    public static <E extends Comparable<E>> E[] arraySort(E[] unsorted, int links, int rechts) {
-        int L = links;
-        int R = rechts;
-        E pivot = unsorted[(links + rechts) / 2];
+    public static <E extends Comparable<E>> E[] arraySort(E[] unsorted, int minimum, int maximum) {
+        int left = minimum;
+        int right = maximum;
+        E pivot = unsorted[(minimum + maximum) / 2];
         Player pivotPlayer = (Player) pivot;
         
         do {
-            Player comparePlayerLeft = (Player) unsorted[L];
+            Player comparePlayerLeft = (Player) unsorted[left];
             while(comparePlayerLeft.compareTo(pivotPlayer) == 1){
-                L++;
-                comparePlayerLeft = (Player) unsorted[L];
+                left++;
+                comparePlayerLeft = (Player) unsorted[left];
             }
-            Player comparePlayerRight = (Player) unsorted[R];
+            Player comparePlayerRight = (Player) unsorted[right];
              while (pivotPlayer.compareTo(comparePlayerRight)== 1)
             {
-                R--;
-                comparePlayerRight = (Player) unsorted[R];
+                right--;
+                comparePlayerRight = (Player) unsorted[right];
             }
 
-            if (L <= R) {
-                E playerLeft = unsorted[L];
-                unsorted[L] = unsorted[R];
-                unsorted[R] = playerLeft;
-                L++;
-                R--;
+            if (left <= right) {
+                E playerLeft = unsorted[left];
+                unsorted[left] = unsorted[right];
+                unsorted[right] = playerLeft;
+                left++;
+                right--;
             }
-        } while (L < R);
+        } while (left < right);
 
-        if (links < R) {
-            arraySort(unsorted, links, R);
+        if (minimum < right) {
+            arraySort(unsorted, minimum, right);
         }
-        if (L < rechts) {
-            arraySort(unsorted, L, rechts);
+        if (left < maximum) {
+            arraySort(unsorted, left, maximum);
         }
         
         return unsorted;
