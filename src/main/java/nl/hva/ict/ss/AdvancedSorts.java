@@ -13,7 +13,7 @@ public class AdvancedSorts {
      * @return
      */
     public static <E extends Comparable<E>> LinkedList<E> quickSort(LinkedList<E> unsorted) {
-        if(unsorted.size() == 0){
+        if(unsorted.isEmpty()){
             return unsorted;
         }else{
             return linkedListSort(unsorted, 0, unsorted.size() - 1);
